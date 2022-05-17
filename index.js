@@ -8,7 +8,7 @@ const questions = [
 
 
 const ask = (index = 0) => {
-    process.stdout.write(questions[index] + `\n\n\n\n`)
+    process.stdout.write("\n\n" + questions[index] + `>`)
 }
 
 ask()
@@ -16,7 +16,7 @@ ask()
 const answers = []
 
 process.stdin.on('data', data => {
-    answers.push(data.toString().trim() + '\n')
+    answers.push(data.toString().trim())
     if (answers.length < questions.length) {
         ask(answers.length)
     } else {
@@ -24,4 +24,8 @@ process.stdin.on('data', data => {
         process.exit()
     }
 
+})
+
+process.on('exit', () => {
+    console.log(`That's cool!`)
 })
